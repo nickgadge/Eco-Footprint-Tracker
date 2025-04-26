@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Eco Projects - EcoTracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e8b57;
+            --secondary-color: #3cb371;
+            --accent-color: #98fb98;
+            --dark-color: #1a3e2f;
+            --light-color: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header - Consistent with other pages */
+        .eco-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .eco-header .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .eco-header .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .eco-header .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .eco-header .nav-links a:hover {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .eco-header .nav-links a.active {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        /* Main Content */
+        .donation-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(46, 139, 87, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .project-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .btn-donate {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(46, 139, 87, 0.3);
+        }
+
+        .verification-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer - Consistent with other pages */
+        .eco-footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .eco-footer p {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .donation-container {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .eco-header {
+                padding: 1rem;
+                flex-direction: column;
+            }
+
+            .eco-header .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="eco-header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <a href="/" class="logo animate__animated animate__fadeInLeft">
+                <i class="fas fa-leaf"></i> EcoTracker
+            </a>
+            <nav class="nav-links animate__animated animate__fadeInRight">
+                {% if 'user_id' in session %}
+                    <a href="/"><i class="fas fa-home icon"></i> Home</a>
+                    <a href="/quiz"><i class="fas fa-clipboard-list icon"></i> Quiz</a>
+                    <a href="/dashboard"><i class="fas fa-chart-line icon"></i> Dashboard</a>
+                    <a href="/donate" class="active"><i class="fas fa-hand-holding-heart icon"></i> Donate</a>
+                    <a href="/logout"><i class="fas fa-sign-out-alt icon"></i> Logout</a>
+                {% else %}
+                    <a href="/"><i class="fas fa-home icon"></i> Home</a>
+                    <a href="/login"><i class="fas fa-sign-in-alt icon"></i> Login</a>
+                    <a href="/register"><i class="fas fa-user-plus icon"></i> Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="donation-container">
+        <h1 class="section-title animate__animated animate__fadeIn">Offset Your Carbon Footprint</h1>
+        <p class="text-center animate__animated animate__fadeIn" style="max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+            Support verified environmental projects to compensate for your carbon emissions. Every contribution makes a difference.
+        </p>
+
+        <div class="projects-grid">
+            <!-- Reforestation Project -->
+            <div class="project-card animate__animated animate__fadeInUp">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                </div>
+                <div class="project-content">
+                    <span class="verification-badge">
+                        <i class="fas fa-check-circle"></i> Verified Project
+                    </span>
+                    <h3 class="project-title">Amazon Reforestation</h3>
+                    <p class="project-description">
+                        Plant native trees in the Amazon rainforest to restore critical habitats and absorb CO₂ from the atmosphere.
+                    </p>
+                    <div class="project-stats">
+                        <span class="project-stat">
+                            <i class="fas fa-tree" style="color: var(--primary-color);"></i> 10 trees planted per $10
+                        </span>
+                        <span class="project-stat">
+                            <i class="fas fa-certificate" style="color: var(--primary-color);"></i> Gold Standard
+                        </span>
+                    </div>
+                    <a href="https://www.goldstandard.org" target="_blank" class="btn-donate">
+                        <i class="fas fa-seedling"></i> Support This Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ocean Cleanup Project -->
+            <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1508948956644-0017e845d797?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80');">
+                </div>
+                <div class="project-content">
+                    <span class="verification-badge">
+                        <i class="fas fa-check-circle"></i> Verified Project
+                    </span>
+                    <h3 class="project-title">Pacific Ocean Cleanup</h3>
+                    <p class="project-description">
+                        Remove plastic waste from the Great Pacific Garbage Patch and prevent marine ecosystem destruction.
+                    </p>
+                    <div class="project-stats">
+                        <span class="project-stat">
+                            <i class="fas fa-recycle" style="color: var(--primary-color);"></i> 5kg waste removed per $10
+                        </span>
+                        <span class="project-stat">
+                            <i class="fas fa-certificate" style="color: var(--primary-color);"></i> Verified Carbon Standard
+                        </span>
+                    </div>
+                    <a href="https://theoceancleanup.com" target="_blank" class="btn-donate">
+                        <i class="fas fa-trash-restore"></i> Support This Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Renewable Energy Project -->
+            <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');">
+                </div>
+                <div class="project-content">
+                    <span class="verification-badge">
+                        <i class="fas fa-check-circle"></i> Verified Project
+                    </span>
+                    <h3 class="project-title">African Solar Initiative</h3>
+                    <p class="project-description">
+                        Bring clean solar energy to rural communities, replacing kerosene lamps and reducing carbon emissions.
+                    </p>
+                    <div class="project-stats">
+                        <span class="project-stat">
+                            <i class="fas fa-solar-panel" style="color: var(--primary-color);"></i> 1 ton CO₂ reduced per $15
+                        </span>
+                        <span class="project-stat">
+                            <i class="fas fa-certificate" style="color: var(--primary-color);"></i> CDM Certified
+                        </span>
+                    </div>
+                    <a href="https://www.carbonfootprint.com" target="_blank" class="btn-donate">
+                        <i class="fas fa-sun"></i> Support This Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5 animate__animated animate__fadeIn">
+            <h3>Not sure where to start?</h3>
+            <p>Calculate your carbon footprint and we'll recommend the most effective projects for you.</p>
+            <a href="/quiz" class="btn-donate" style="max-width: 300px; margin: 0 auto;">
+                <i class="fas fa-calculator"></i> Calculate My Footprint
+            </a>
+        </div>
+    </main>
+
+    <footer class="eco-footer animate__animated animate__fadeIn">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 EcoTracker | <i class="fas fa-heart" style="color: #ff6b6b;"></i> Empowering Sustainable Choices</p>
+        <p>Small changes today for a greener tomorrow</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
